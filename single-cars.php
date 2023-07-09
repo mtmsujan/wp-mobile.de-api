@@ -7,7 +7,31 @@
         <a href="/unsere-fahrzeuge" class="text-red mt-2 d-inline-block">zurück</a>
 
         <div class="car-section">
-            <?php while( have_posts() ) : the_post(); ?>
+            <?php while( have_posts() ) : the_post(); 
+            
+            $key = get_post_meta(get_the_id(), 'vehicle_options', true)['key'];
+                    $model = get_post_meta(get_the_id(), 'vehicle_options', true)['model'];
+                    $model_description = get_post_meta(get_the_id(), 'vehicle_options', true)['model-description'];
+                    $image_url = get_post_meta(get_the_id(), 'vehicle_options', true)['image_url'];
+                    $currency = get_post_meta(get_the_id(), 'vehicle_options', true)['currency'];
+                    $price = get_post_meta(get_the_id(), 'vehicle_options', true)['price'];
+                    $vat_rate = get_post_meta(get_the_id(), 'vehicle_options', true)['vat_rate'];
+                    $vatable = get_post_meta(get_the_id(), 'vehicle_options', true)['vatable'];
+                    $class = get_post_meta(get_the_id(), 'vehicle_options', true)['class'];
+                    $category = get_post_meta(get_the_id(), 'vehicle_options', true)['category'];
+                    $first_registration = get_post_meta(get_the_id(), 'vehicle_options', true)['first-registration'];
+                    $mileage = get_post_meta(get_the_id(), 'vehicle_options', true)['mileage'];
+                    $transmission = get_post_meta(get_the_id(), 'vehicle_options', true)['transmission'];
+                    $fuel = get_post_meta(get_the_id(), 'vehicle_options', true)['fuel'];
+                    $power = get_post_meta(get_the_id(), 'vehicle_options', true)['power'];
+                    $fuel_with_power = $power . ' kW / ' . round($power * 1.36) . ' PS , ' . $fuel;
+                    $fuel_consumption_combined = get_post_meta(get_the_id(), 'vehicle_options', true)['fuel-consumption-combined'];
+                    $co2_emissions_combined = get_post_meta(get_the_id(), 'vehicle_options', true)['co2-emissions-combined'];
+                    $zipcode = get_post_meta(get_the_id(), 'vehicle_options', true)['zipcode'];
+                    $city = get_post_meta(get_the_id(), 'vehicle_options', true)['city'];
+                    $country_code = get_post_meta(get_the_id(), 'vehicle_options', true)['country-code'];
+                
+            ?>
 
                 <div class="car-item">
 
@@ -16,8 +40,15 @@
                     </h1>
                     <div class="four-columns">
                         <div class="car-image column overflow-hidden">
-                            <?php the_post_thumbnail(); ?>
-                            <div class="slick-carousel">
+                            <?php
+                                $image_url = get_post_meta(get_the_id(), 'vehicle_options', true)['image_url'];
+                                if ( !empty($image_url) ) {
+                                    echo '<img src="'.$image_url.'" alt="'.get_the_title().'">';
+                                } else {
+                                    echo '<img src="'.plugin_dir_url( __FILE__ ).'/assets/img/no-image.jpg" alt="'.get_the_title().'">';
+                                }
+                            ?>
+                            <!-- <div class="slick-carousel">
                                 
                                 <div>
                                     <img src="http://carsapi.test/wp-content/uploads/2023/07/436932-649ed8589dd9b49a86372-55e6-470c-aebb-3e2a400247fa_rulemo-640.jpg" alt="">
@@ -35,39 +66,33 @@
                                     <img src="http://carsapi.test/wp-content/uploads/2023/07/436932-649ed8589dd9b49a86372-55e6-470c-aebb-3e2a400247fa_rulemo-640.jpg" alt="">
                                 </div>
                                         
-                            </div>
+                            </div> -->
                         </div>
                         
                         <div class="car-content column">
                             <div class="price-content">
-                                <h1 class="price">15.300 EUR</h1>
-                                <p class="price-label">Mehrwertsteuer nicht ausweisbar</p>
+                                <h1 class="price"><?php echo $price . ' ' . $currency; ?></h1>
+                                <p class="price-label"><?php echo $vatable; ?></p>
                             </div>
-                            <p>Van/Kleinbus , Gebrauchtfahrzeug</p>
-                            <p><strong>EZ:</strong> 11.2017</p>
-                            <p><strong>Kilometerstand:</strong> 77.855</p>
-                            <p><strong>Treibstoff:</strong> Diesel</p>
-                            <p><strong>Leistung:</strong> 100 kW / 136 PS , Benzin</p>
-                            <p><strong>Getriebe:</strong> Schaltgetriebe</p>
-
-                            <h2 class="sub-title">ANSPRECHPARTNER</h2>
-                            <p>Jonathan Weiß</p>
-                            <p>Tel.:   0271 7700734-12</p>
-                            <p>E-Mail: <a href="mailto:j.weiss@weissauto.de">j.weiss@weissauto.de</a></p>
-                        
-                            <p class="mt-2">Dirk Schneider</p>
-                            <p>Tel.:   0271 7700734-11</p>
+                            <p><?php echo $class . '<br />' . $category; ?></p>
+                            <p><strong>EZ:</strong> <?php echo $first_registration; ?></p>
+                            <p><strong>Kilometerstand:</strong> <?php echo $mileage; ?></p>
+                            <p><strong>Treibstoff:</strong> <?php echo strtoupper($fuel); ?></p>
+                            <p><strong>Leistung:</strong> <?php echo $fuel_with_power; ?></p>
+                            <p><strong>Getriebe:</strong> <?php echo $transmission; ?></p>
+                            
+                            <h2 class="sub-title">Verkäuferin</h2>
+                            <p><strong>Postleitzahl:</strong> <?php echo $zipcode; ?></p>
+                            <p><strong>Stadt:</strong> <?php echo $city; ?></p>
+                            <p><strong>Landesvorwahl:</strong> <?php echo $country_code; ?></p>
+                            
                         </div>
                         
                     </div>
 
-                    <div class="additional-info">
-                        <p>E-Mail: <a href="mailto:d.schneider@weissauto.de">d.schneider@weissauto.de</a></p>
+                    <!-- <div class="additional-info">
 
-                        <h2 class="sub-title">UMWELTPLAKETTE:</h2>
-                        <img src="https://www.weissauto.de/wp-content/plugins/mobilede_wordpress/images/4.png" alt="">
-
-                        <h2 class="sub-title">AUSSTATTUNG:</h2>
+                        <h2 class="sub-title">Spezifikation:</h2>
                         <ul class="ausstattung">
                             <li>Zentralverriegelung</li>
                             <li>Servolenkung</li>
@@ -79,15 +104,8 @@
                             <li>Trennwand</li>
                         </ul>
 
-                        <h2 class="sub-title">WEITERE DATEN:</h2>
-                        <p><strong>Hubraum:</strong> 1598 cm³</p>
-                        <p><strong>Aussenfarbe:</strong> Weiß</p>
-                        <p><strong>Anzahl Sitze:</strong> 3</p>
-
-                        <p class="small-text">
-                            * Weitere Informationen zum offiziellen Kraftstoffverbrauch und zu den offiziellen spezifischen CO2-Emissionen und gegebenenfalls zum Stromverbrauch neuer PKW können dem Leitfaden über den offiziellen Kraftstoffverbrauch, die offiziellen spezifischen CO2-Emissionen und den offiziellen Stromverbrauch neuer PKW' entnommen werden, der an allen Verkaufsstellen und bei der 'Deutschen Automobil Treuhand GmbH' unentgeltlich erhältlich ist unter <a class="text-red" href="http://www.dat.de">www.dat.de</a>.
-                        </p>
-                    </div>
+                        
+                    </div> -->
                 </div>
 
                 <?php wp_link_pages(); ?>

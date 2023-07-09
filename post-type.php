@@ -6,12 +6,12 @@ function create_post_type() {
     register_post_type( 'cars',
         array(
         'labels' => array(
-            'name' => __( 'Cars' ),
-            'singular_name' => __( 'Car' )
+            'name' => __( 'Vehicles' ),
+            'singular_name' => __( 'Vehicle' )
         ),
         'public' => true,
         'has_archive' => true,
-        'rewrite' => array('slug' => 'cars'),
+        'rewrite' => array('slug' => 'vehicles'),
         'supports' => array('title', 'editor', 'thumbnail'),
         )
     );

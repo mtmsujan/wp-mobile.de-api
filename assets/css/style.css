@@ -148,3 +148,11 @@ a.text-red:hover {
 .small-text {
   font-size: 14px;
 }
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.text-center {
+  text-align: center;
+}
