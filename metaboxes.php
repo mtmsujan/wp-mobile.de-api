@@ -141,6 +141,110 @@ if( class_exists( 'CSF' ) ) {
           'type'  => 'text',
           'title' => 'Seller country code',
         ),
+        // Features 
+        array(
+          'id'    => 'features',
+          'type'  => 'text',
+          'title' => 'Features',
+        ),
+        // All Images
+        array(
+          'id'    => 'all-images',
+          'type'  => 'text',
+          'title' => 'All Images',
+        ),
+        // Seller Company Name
+        array(
+          'id'    => 'seller-company-name',
+          'type'  => 'text',
+          'title' => 'Seller Company Name',
+        ),
+        // Seller Phone Number
+        array(
+          'id'    => 'seller-phone-1',
+          'type'  => 'text',
+          'title' => 'Seller Phone Number',
+        ),
+        // Seller Email
+        array(
+          'id'    => 'seller-email',
+          'type'  => 'text',
+          'title' => 'Seller Email',
+        ),
+        // Cubic Capacity
+        array(
+          'id'    => 'cubic-capacity',
+          'type'  => 'text',
+          'title' => 'Cubic Capacity',
+        ),
+        // Exterior Color
+        array(
+          'id'    => 'exterior-color',
+          'type'  => 'text',
+          'title' => 'Exterior Color',
+        ),
+        // Number of Previous Owners
+        array(
+          'id'    => 'number-of-previous-owners',
+          'type'  => 'text',
+          'title' => 'Number of Previous Owners',
+        ),
+        // Emission Fuel Consumption Combined
+        array(
+          'id'    => 'emission-fuel-consumption-combined',
+          'type'  => 'text',
+          'title' => 'Emission Fuel Consumption Combined',
+        ),
+        // Emission Fuel Consumption Inner City
+        array(
+          'id'    => 'emission-fuel-consumption-inner-city',
+          'type'  => 'text',
+          'title' => 'Emission Fuel Consumption Inner City',
+        ),
+        // Emission Fuel Consumption Outer City
+        array(
+          'id'    => 'emission-fuel-consumption-outer-city',
+          'type'  => 'text',
+          'title' => 'Emission Fuel Consumption Outer City',
+        ),
+        // Co2 Emission
+        array(
+          'id'    => 'co2-emission',
+          'type'  => 'text',
+          'title' => 'Co2 Emission',
+        ),
+        // Interior Type
+        array(
+          'id'    => 'interior-type',
+          'type'  => 'text',
+          'title' => 'Interior Type',
+        ),
+        // Interior Color
+        array(
+          'id'    => 'interior-color',
+          'type'  => 'text',
+          'title' => 'Interior Color',
+        ),
+        // Door count
+        array(
+          'id'    => 'door-count',
+          'type'  => 'text',
+          'title' => 'Door Count',
+        ),
+        // Number of Seats
+        array(
+          'id'    => 'num-seats',
+          'type'  => 'text',
+          'title' => 'Number of Seats',
+        ),
+        // Airbag
+        array(
+          'id'    => 'airbag',
+          'type'  => 'text',
+          'title' => 'Airbag',
+        ),
+        
+        
         
   
       )

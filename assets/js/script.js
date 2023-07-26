@@ -1,10 +1,15 @@
-jQuery(document).ready(function ($) {
-  $(".slick-carousel").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
-    nextArrow: '<button type="button" class="slick-next">&#10095;</button>',
+$(document).ready(function () {
+  $("#image-gallery").lightSlider({
+    gallery: true,
+    item: 1,
+    thumbItem: 3,
+    slideMargin: 0,
+    speed: 1000,
+    pause: 4000,
+    auto: true,
+    loop: true,
+    onSliderLoad: function () {
+      $("#image-gallery").removeClass("cS-hidden");
+    },
   });
 });

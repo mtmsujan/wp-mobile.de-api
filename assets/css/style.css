@@ -96,7 +96,7 @@ a.text-red:hover {
 }
 
 /* Slick Carousel */
-.slick-carousel {
+/* .slick-carousel {
   margin-right: 20px;
   position: relative;
 }
@@ -120,7 +120,7 @@ a.text-red:hover {
 }
 .slick-carousel .slick-next {
   right: 10px;
-}
+} */
 
 /* Custom framework classes */
 .d-block {
@@ -156,3 +156,22 @@ a.text-red:hover {
 .text-center {
   text-align: center;
 }
+
+.bg-red {
+  background: red !important;
+}
+
+/* lightslider */
+
+.vehicle-slider ul {
+  list-style: none outside none;
+  padding-left: 0;
+  margin: 0;
+}
+.vehicle-slider .item {
+  margin-bottom: 60px;
+}
+
+/* .vehicle-slider {
+  width: 600px;
+} */
