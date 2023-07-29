@@ -20,6 +20,12 @@
   padding-bottom: 50px;
 }
 
+.column-car-title {
+  font-weight: normal;
+  line-height: 0.7em;
+  margin-top: 0;
+}
+
 .car-item .car-title a {
   font-size: 22px;
 }
@@ -29,9 +35,18 @@
   flex-wrap: wrap;
 }
 
+.three-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
 .four-columns .column {
   flex: 20%;
   margin-right: 20px;
+}
+
+.single-column {
+  width: 30%;
 }
 @media screen and (max-width: 800px) {
   .four-columns .column {
@@ -41,10 +56,19 @@
   }
 }
 
+.cars-column-title {
+  font-size: 30px;
+  color: #dc1515;
+}
+.title-url {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
 .car-content p {
   margin-top: 0;
   margin-bottom: 4px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .all-cars .price-content {
@@ -95,33 +119,6 @@ a.text-red:hover {
   transition: all 0.3s ease-in-out;
 }
 
-/* Slick Carousel */
-/* .slick-carousel {
-  margin-right: 20px;
-  position: relative;
-}
-.slick-carousel img {
-  width: 90%;
-  margin: 0 5%;
-  height: auto;
-}
-.slick-carousel .slick-prev,
-.slick-carousel .slick-next {
-  position: absolute;
-  top: 40%;
-  z-index: 9999;
-  cursor: pointer;
-  background: #000;
-  color: #fff;
-}
-
-.slick-carousel .slick-prev {
-  left: 10px;
-}
-.slick-carousel .slick-next {
-  right: 10px;
-} */
-
 /* Custom framework classes */
 .d-block {
   display: block;
@@ -161,6 +158,23 @@ a.text-red:hover {
   background: red !important;
 }
 
+.button-centered {
+  display: block !important;
+  width: 30%;
+  margin: 20px auto;
+  padding: 20px 0 !important;
+  font-size: 20px !important;
+  min-width: 200px;
+  transition: 0.5s !important;
+}
+.button-centered:hover {
+  background: #3e4248 !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* lightslider */
 
 .vehicle-slider ul {
@@ -172,6 +186,7 @@ a.text-red:hover {
   margin-bottom: 60px;
 }
 
-/* .vehicle-slider {
-  width: 600px;
-} */
+.car-image img {
+  width: 100%;
+  height: auto;
+}

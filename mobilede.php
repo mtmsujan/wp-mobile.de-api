@@ -1,11 +1,11 @@
 <?php 
 /* 
 Plugin Name: Mobile.de API
-Plugin URI: https://www.imjol.com
+Plugin URI: http://www.mobile.de
 Description: Mobile.de API
 Version: 1.0
-Author: Imjol
-Author URI: https://www.imjol.com
+Author: Mobile.de API
+Author URI: http://www.mobile.de
 */
 
 // require a file that is inside inc folder of this plugin and the file is called mobilede.php

@@ -596,3 +596,97 @@ function update_vehicles(){
 
     
 }
+
+// create a shortcode to show 3 cars by a loop from the post type cars 
+function cars_column_shortcode( $atts ) {
+    ob_start();
+    
+    $query = array(
+        'post_type' => 'cars',
+        'posts_per_page' => 3,
+        'order' => 'DESC',
+    );
+
+
+    $query = new WP_Query( $query );
+
+    ?>
+    <div class="car-list">
+        <div class="cars-column">
+
+            <h1 class="cars-column-title">AKTUELLE FAHRZEUGE</h1>
+
+            <div class="three-columns">
+                <?php while( $query->have_posts() ) : $query->the_post(); 
+                
+                    $key = get_post_meta(get_the_id(), 'vehicle_options', true)['key'];
+                    $model = get_post_meta(get_the_id(), 'vehicle_options', true)['model'];
+                    $model_description = get_post_meta(get_the_id(), 'vehicle_options', true)['model-description'];
+                    $image_url = get_post_meta(get_the_id(), 'vehicle_options', true)['image_url'];
+                    $currency = get_post_meta(get_the_id(), 'vehicle_options', true)['currency'];
+                    $price = get_post_meta(get_the_id(), 'vehicle_options', true)['price'];
+                    $vat_rate = get_post_meta(get_the_id(), 'vehicle_options', true)['vat_rate'];
+                    $vatable = get_post_meta(get_the_id(), 'vehicle_options', true)['vatable'];
+                    $class = get_post_meta(get_the_id(), 'vehicle_options', true)['class'];
+                    $category = get_post_meta(get_the_id(), 'vehicle_options', true)['category'];
+                    $first_registration = get_post_meta(get_the_id(), 'vehicle_options', true)['first-registration'];
+                    $mileage = get_post_meta(get_the_id(), 'vehicle_options', true)['mileage'];
+                    $transmission = get_post_meta(get_the_id(), 'vehicle_options', true)['transmission'];
+                    $fuel = get_post_meta(get_the_id(), 'vehicle_options', true)['fuel'];
+                    $power = get_post_meta(get_the_id(), 'vehicle_options', true)['power'];
+                    $fuel_with_power = $power . ' kW / ' . round($power * 1.36) . ' PS , ' . $fuel;
+                    $fuel_consumption_combined = get_post_meta(get_the_id(), 'vehicle_options', true)['emission-fuel-consumption-combined'];
+                    $co2_emissions_combined = get_post_meta(get_the_id(), 'vehicle_options', true)['co2-emission'];
+                    $all_images = get_post_meta(get_the_id(), 'vehicle_options', true)['all-images'];
+                    $all_images = json_decode($all_images, true);
+                ?>
+
+                    <div class="single-column">
+
+                        <h2 class="car-title column-car-title">
+                            <a class="text-red title-url" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h2>
+                        <div class="">
+                            <div class="car-image">
+                                <a href="<?php the_permalink(); ?>">
+                                <?php
+                                    $image_url = get_post_meta(get_the_id(), 'vehicle_options', true)['image_url'];
+                                    if ( !empty($image_url) ) {
+                                        echo '<img src="'.$image_url.'" alt="'.get_the_title().'">';
+                                    } else {
+                                        echo '<img src="'.plugin_dir_url( __FILE__ ).'/assets/img/no-img.jpg" alt="'.get_the_title().'">';
+                                    }
+                                ?>
+                                </a>
+                            </div>
+                            <div class="car-content column">
+                                <p>Kraftstoffart: <?php echo $fuel; ?></p>
+                                <p>Preis: <?php echo $price . " " . $currency; ?></p>
+                                <p>Kilometer: <?php echo $mileage; ?> KM</p>
+                                <p>Erstzulassung: <?php echo explode("-", $first_registration)[0]; ?></p>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+
+                
+            </div>
+            <a class="button-centered elementor-button elementor-button-link elementor-size-sm bg-red" href="/fahrzeuge/">
+                    <span class="elementor-button-content-wrapper">
+                        <span class="elementor-button-text">
+                            Weitere Fahrzeuge
+                        </span>
+                    </span>
+                </a>
+        </div>
+    </div>
+    
+    <?php wp_reset_postdata();
+
+    return ob_get_clean();
+}
+
+add_shortcode( 'cars-column', 'cars_column_shortcode' );

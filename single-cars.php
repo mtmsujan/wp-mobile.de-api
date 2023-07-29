@@ -225,7 +225,7 @@
                             </div>
                             <p><?php echo $class . '<br />' . $category; ?></p>
                             <p><strong>EZ:</strong> <?php echo $first_registration; ?></p>
-                            <p><strong>Kilometerstand:</strong> <?php echo $mileage / 1000; ?></p>
+                            <p><strong>Kilometerstand:</strong> <?php echo $mileage; ?></p>
                             <p><strong>Treibstoff:</strong> <?php echo strtoupper($fuel); ?></p>
                             <p><strong>Leistung:</strong> <?php echo $fuel_with_power; ?></p>
                             <p><strong>Getriebe:</strong> <?php echo $transmission; ?></p>
@@ -233,7 +233,7 @@
                             <h2 class="sub-title">Verkäufer</h2>
                             <p><?php echo $company_name; ?></p>
                             <p><strong>Tel: </strong> <?php echo $seller_phone_1; ?></p>
-                            <p><strong>E-Mail:</strong> <?php echo $seller_email; ?></p>
+                            <p><strong>E-Mail:</strong> mb.automobile@mail.de</p>
                             <a class="elementor-button elementor-button-link elementor-size-sm bg-red" href="/contact">
                                 <span class="elementor-button-content-wrapper">
                                     <span class="elementor-button-text">
