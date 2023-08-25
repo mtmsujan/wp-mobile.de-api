@@ -111,7 +111,7 @@ function cars_shortcode( $atts ) {
                             <div class="car-content column">
                                 <p><?php echo $class . ' , ' . $category; ?></p>
                                 <p><strong>EZ:</strong> <?php echo $first_registration; ?></p>
-                                <p><strong>Kilometerstand:</strong> <?php echo $mileage / 1000; ?></p>
+                                <p><strong>Kilometerstand:</strong> <?php echo $mileage; ?>KM</p>
                                 <p><strong>Getriebe:</strong> <?php echo $transmission; ?></p>
                                 <p><strong>Leistung:</strong> <?php echo $fuel_with_power; ?></p>
                                 <?php if(!empty($fuel_consumption_combined)) : ?>
@@ -335,6 +335,19 @@ function add_vehicle_shortcode(){
                     $model = isset($car_array['vehicle']['model']) ? $car_array['vehicle']['model']['@attributes']['key'] : "";
                     $model_description = $car_array['vehicle']['model-description']['@attributes']['value'];
                     $title = $model . ' ' . $model_description;
+                    $enrichedDescription = $car_array['enrichedDescription']; // Full Description
+                    $enrichedDescription = str_replace("", "", $car_array['enrichedDescription']);
+
+                    $pattern = '/\*\*(.*?)\*\*/';
+                    $replacement = '<strong>$1</strong>';
+                    
+                    $enrichedDescription = preg_replace($pattern, $replacement, $enrichedDescription);
+                    
+                    $enrichedDescription = str_replace("**\\\\**", "<br><br>", $enrichedDescription);
+                    $enrichedDescription = str_replace("**\\\\**", "<br><br>", $enrichedDescription);
+                    $enrichedDescription = str_replace("**\\**\\", "<br><br>", $enrichedDescription);
+                    $enrichedDescription = str_replace("\\", "<br>", $enrichedDescription);
+
                     $image = isset($car_array['images']['image'][0]) ? $car_array['images']['image'][0]['representation'][1]['@attributes']['url'] : "";
                     $currency = $car_array['price']['@attributes']['currency'];
                     $price = $car_array['price']['consumer-price-amount']['@attributes']['value'];
@@ -392,7 +405,7 @@ function add_vehicle_shortcode(){
                     $new_content = $car_array['description'];
                     $updated_post = array(
                         'ID'           => $post_id,
-                        'post_content' => $new_content,
+                        'post_content' => $enrichedDescription,
                     );
                     wp_update_post($updated_post);
         

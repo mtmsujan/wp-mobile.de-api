@@ -54,6 +54,13 @@
     margin-right: 20px;
     text-align: left;
   }
+  .three-columns {
+    display: block;
+  }
+  .single-column {
+    width: 100%;
+    margin-bottom: 40px;
+  }
 }
 
 .cars-column-title {

@@ -225,7 +225,7 @@
                             </div>
                             <p><?php echo $class . '<br />' . $category; ?></p>
                             <p><strong>EZ:</strong> <?php echo $first_registration; ?></p>
-                            <p><strong>Kilometerstand:</strong> <?php echo $mileage; ?></p>
+                            <p><strong>Kilometerstand:</strong> <?php echo $mileage; ?>KM</p>
                             <p><strong>Treibstoff:</strong> <?php echo strtoupper($fuel); ?></p>
                             <p><strong>Leistung:</strong> <?php echo $fuel_with_power; ?></p>
                             <p><strong>Getriebe:</strong> <?php echo $transmission; ?></p>
@@ -292,6 +292,11 @@
                         <?php if ( !empty($airbag) ) : ?>
                         <p><strong>Airbag: </strong> <?php echo $airbag; ?></p>
                         <?php endif; ?>
+
+                        <h2>Fahrzeugbeschreibung</h2>
+                        <p>
+                            <?php the_content(); ?>
+                        </p>
                         
                         
                     </div>
